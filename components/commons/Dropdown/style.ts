@@ -1,7 +1,7 @@
 import { styled } from "@lib/stitches.config";
 
 export const DropdownnStyled = styled("div", {
-  width: "100px",
+  width: "150px",
   height: "40px",
   color: "#6B7280",
   cursor: "pointer",
@@ -9,12 +9,11 @@ export const DropdownnStyled = styled("div", {
 
   ".selected-item": {
     position: "relative",
-    padding: "0 15px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    border: "1px solid #d1d5db",
-    width: "70px",
+    border: "1px solid #D1D5DB",
+    width: "150px",
     height: "40px",
   },
   ".arrow-box": {
@@ -23,23 +22,23 @@ export const DropdownnStyled = styled("div", {
     top: "9px",
   },
   ".select-list": {
-    width: "100px",
+    width: "150px",
     maxHeight: 0,
     overflow: "hidden",
     borderWidth: "0 1px 0 1px",
     borderStyle: "solid",
-    borderColor: "#d1d5db",
+    borderColor: "#D1D5DB",
     transition: "max-height 0.3s ease",
 
     li: {
-      width: "100px",
+      width: "150px",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
       height: "40px",
       listStyle: "none",
       userSelect: "none",
-      borderBottom: "1px solid #d1d5db",
+      borderBottom: "1px solid #D1D5DB",
     },
   },
   ".select-item": {},

@@ -19,6 +19,7 @@ const Dropdown = ({
 
   const handleSelectOption = (option: OptionProps) => {
     setSelectOption(option);
+    handleSlideList();
   };
 
   const handleSlideList = () => {
@@ -46,18 +47,15 @@ const Dropdown = ({
         </div>
       </div>
       <ul className="select-list" ref={listRef}>
-        {selectList.map(
-          (item, index) =>
-            item.content !== selectedItem.content && (
-              <li
-                className="select-item"
-                key={index}
-                onClick={() => handleSelectOption(item)}
-              >
-                {item.content}
-              </li>
-            )
-        )}
+        {selectList.map((item, index) => (
+          <li
+            className="select-item"
+            key={index}
+            onClick={() => handleSelectOption(item)}
+          >
+            {item.content}
+          </li>
+        ))}
       </ul>
     </DropdownnStyled>
   );

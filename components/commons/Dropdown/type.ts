@@ -6,5 +6,5 @@ export interface DropdownProps
   extends ComponentPropsWithoutRef<typeof DropdownnStyled> {
   selectList: OptionProps[];
   selectedItem: OptionProps;
-  setSelectOption: Dispatch<React.SetStateAction<OptionProps>>;
+  setSelectOption: (optionValue: OptionProps) => void;
 }
