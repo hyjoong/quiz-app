@@ -1,5 +1,7 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { ComponentPropsWithoutRef, ReactNode } from "react";
+import { ButtonStyled } from "./style";
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends ComponentPropsWithoutRef<typeof ButtonStyled> {
   children: ReactNode;
 }
