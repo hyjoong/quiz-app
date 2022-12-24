@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
 import { DropdownnStyled } from "./style";
-import { OptionProps, DropdownProps } from "./type";
+import { DropdownProps } from "./type";
 import useOutsideClick from "@hooks/useOutsideClick";
 import ArrowBottom from "../Icons/ArrowBottom";
+import { OptionProps } from "@type/option";
 
 const Dropdown = ({
   selectedItem,

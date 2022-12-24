@@ -1,14 +1,9 @@
 import { DropdownnStyled } from "./style";
 import { ComponentPropsWithoutRef, Dispatch } from "react";
+import { OptionProps } from "@type/option";
 
-export interface OptionProps
+export interface DropdownProps
   extends ComponentPropsWithoutRef<typeof DropdownnStyled> {
-  title: string;
-  content: string;
-  value: string | number | null;
-}
-
-export interface DropdownProps {
   selectList: OptionProps[];
   selectedItem: OptionProps;
   setSelectOption: Dispatch<React.SetStateAction<OptionProps>>;
