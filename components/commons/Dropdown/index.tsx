@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { DropdownnStyled } from "./style";
+import { DropdownnStyled, SelectedItem } from "./style";
 import { DropdownProps } from "./type";
 import useOutsideClick from "@hooks/useOutsideClick";
 import ArrowBottom from "../Icons/ArrowBottom";
@@ -30,7 +30,10 @@ const Dropdown = ({
     if (isOpen) {
       style.maxHeight = "0";
     } else if (!isOpen) {
-      style.maxHeight = `${listRef.current.scrollHeight}px`;
+      const calcHeight =
+        listRef.current.scrollHeight < 300 ? listRef.current.scrollHeight : 300;
+      style.maxHeight = `${calcHeight}px`;
+      style.overflowY = "auto";
     }
     setIsOpen(!isOpen);
   };
@@ -40,17 +43,17 @@ const Dropdown = ({
 
   return (
     <DropdownnStyled ref={dropdownRef} {...props}>
-      <div className="selected-item" onClick={handleMenu}>
+      <SelectedItem isOpen={isOpen} onClick={handleMenu}>
         <p> {selectedItem.content}</p>
         <div className="arrow-box">
           <ArrowBottom rotate={isOpen} />
         </div>
-      </div>
+      </SelectedItem>
       <ul className="select-list" ref={listRef}>
         {selectList.map((item, index) => (
           <li
             className="select-item"
-            key={index}
+            key={item.value}
             onClick={() => handleSelectOption(item)}
           >
             {item.content}

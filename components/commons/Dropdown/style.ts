@@ -7,15 +7,6 @@ export const DropdownnStyled = styled("div", {
   cursor: "pointer",
   margin: "0 auto",
 
-  ".selected-item": {
-    position: "relative",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    border: "1px solid #D1D5DB",
-    width: "150px",
-    height: "40px",
-  },
   ".arrow-box": {
     position: "absolute",
     right: "10px",
@@ -25,10 +16,19 @@ export const DropdownnStyled = styled("div", {
     width: "150px",
     maxHeight: 0,
     overflow: "hidden",
-    borderWidth: "0 1px 0 1px",
+    borderWidth: "0 1px 1px 1px",
     borderStyle: "solid",
     borderColor: "#D1D5DB",
     transition: "max-height 0.3s ease",
+
+    "&::-webkit-scrollbar": {
+      width: "5px",
+      backgroundColor: "#E9E9E9",
+    },
+
+    "&::-webkit-scrollbar-thumb ": {
+      backgroundColor: "#C5C2C2",
+    },
 
     li: {
       width: "150px",
@@ -38,8 +38,29 @@ export const DropdownnStyled = styled("div", {
       height: "40px",
       listStyle: "none",
       userSelect: "none",
-      borderBottom: "1px solid #D1D5DB",
+      "&:not(:last-child)": {
+        borderBottom: "1px solid #D1D5DB",
+      },
     },
   },
-  ".select-item": {},
+});
+
+export const SelectedItem = styled("div", {
+  position: "relative",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderWidth: "1px 1px 0px 1px",
+  borderStyle: "solid",
+  borderColor: "#D1D5DB",
+  width: "150px",
+  height: "40px",
+
+  variants: {
+    isOpen: {
+      true: {
+        borderWidth: "1px",
+      },
+    },
+  },
 });
