@@ -1,8 +1,8 @@
 import { styled } from "@lib/stitches.config";
 
 export const ButtonStyled = styled("button", {
-  color: "#FFFFFF",
-  backgroundColor: "#00C896",
+  color: "$white",
+  backgroundColor: "$green",
   outLine: "none",
   border: "none",
   cursor: "pointer",
@@ -28,6 +28,15 @@ export const ButtonStyled = styled("button", {
         backgroundColor: "#D1D5DB",
         cursor: "no-drop",
       },
+    },
+
+    StyleType: {
+      normal: {
+        color: "$green",
+        backgroundColor: "$white",
+        border: "1px solid $green",
+      },
+      filled: { color: "$white", backgroundColor: "$green" },
     },
   },
 });
