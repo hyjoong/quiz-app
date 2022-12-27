@@ -14,6 +14,9 @@ export const {
     colors: {
       gray400: "gainsboro",
       gray500: "lightgray",
+      white: "#FFFFFF",
+      green: "#00C896",
+      red: "#F04438",
     },
   },
   media: {
