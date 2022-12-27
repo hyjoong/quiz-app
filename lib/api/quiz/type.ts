@@ -1,4 +1,3 @@
 export interface Quiz {
-  category: number;
-  difficulty: string;
+  query: string;
 }
