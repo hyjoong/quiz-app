@@ -1,19 +1,22 @@
-import { NextParsedUrlQuery } from "next/dist/server/request-meta";
+import { Quiz } from "@type/quiz";
 import { QuizBoxStyled } from "./style";
 import { ComponentPropsWithoutRef } from "react";
 
-export interface QuizBoxProps
-  extends ComponentPropsWithoutRef<typeof QuizBoxStyled> {
-  query: NextParsedUrlQuery;
-}
+export type InferArray<T extends any[]> = T extends (infer U)[]
+  ? NonNullable<U>
+  : never;
 
-export interface Quiz {
-  category: string;
-  correct_answer: string;
-  difficulty: string;
-  incorrect_answers: string[];
-  question: string;
-  type: string;
+const isNotEmpty = <TValue>(
+  value: TValue | null | undefined
+): value is TValue => {
+  return value !== null && value !== undefined;
+};
+
+export interface QuizBoxProps
+  extends ComponentPropsWithoutRef<typeof QuizBoxStyled> {}
+
+export interface QuizBoxProps {
+  data: Quiz[];
 }
 
 export type QuizProblem = Pick<Quiz, "correct_answer" | "incorrect_answers">;
