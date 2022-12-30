@@ -5,6 +5,11 @@ export const QuizBoxStyled = styled("div", {
 
   ".quiz-header": {
     display: "flex",
+    justifyContent: "space-between",
+  },
+
+  ".quiz-question": {
+    display: "flex",
     alignItems: "center",
     height: "200px",
     backgroundColor: "$green",
@@ -23,6 +28,22 @@ export const QuizBoxStyled = styled("div", {
   },
 });
 
+export const AnswerCount = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  variants: {
+    isCorrect: {
+      true: {
+        color: "$green",
+      },
+      false: {
+        color: "$red",
+      },
+    },
+  },
+});
+
 export const QuizList = styled("ul", {
   padding: "40px",
 });
@@ -32,4 +53,23 @@ export const ButtonWrapper = styled("div", {
   justifyContent: "space-between",
   maxWidth: "300px",
   margin: "50px auto",
+});
+
+export const AnswerResult = styled("div", {
+  display: "flex",
+  justifyContent: "center",
+  height: "20px",
+  fontSize: "22px",
+  fontWeight: "600",
+
+  variants: {
+    isAnswered: {
+      true: {
+        color: "$green",
+      },
+      false: {
+        color: "$red",
+      },
+    },
+  },
 });
