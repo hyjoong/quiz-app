@@ -69,7 +69,13 @@ const QuizBox = () => {
         <Button
           size="lg"
           onClick={isAnswered === undefined ? handleSubmit : handleTryAgain}
-          StyleType={isAnswered === undefined ? "filled" : "normal"}
+          StyleType={
+            isAnswered !== undefined ||
+            (isAnswered === undefined && selectOption === "")
+              ? "normal"
+              : "filled"
+          }
+          disabled={selectOption === "" && isAnswered === undefined}
         >
           {isAnswered === undefined ? "정답 확인" : "다시 풀기"}
         </Button>
