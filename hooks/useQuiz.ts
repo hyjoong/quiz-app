@@ -8,9 +8,11 @@ const useQuiz = (quizList: any) => {
   const [isAnswered, setIsAnswered] = useState<undefined | boolean>(undefined);
   const [selectOption, setSelectOption] = useState("");
   const [quizNumber, setQuizNumber] = useState(0);
+  const time = performance.now() / 1000;
   const router = useRouter();
 
-  const { setCorrectNumber, setInCorrectNumber } = useStore()?.quizStore;
+  const { setCorrectNumber, setInCorrectNumber, setTimer } =
+    useStore()?.quizStore;
 
   const handleSubmit = () => {
     const isAnswered = selectOption === quizList[quizNumber].correct_answer;
@@ -38,11 +40,10 @@ const useQuiz = (quizList: any) => {
   const handlePage = () => {
     if (quizList.length === quizNumber + 1) {
       setCorrectNumber(correctCount);
-      setInCorrectNumber(inCorrectCount);
+      setTimer(time.toFixed(2));
       router.push("/result");
       return;
     }
-    // QuizNumber === 문제.length 면 다음문제 버튼 비활성화
     setQuizNumber((prev) => prev + 1);
     setSelectOption("");
     setIsAnswered(undefined);
