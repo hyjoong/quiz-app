@@ -1,6 +1,7 @@
 import CheckDefault from "@components/commons/Icons/CheckDefaultIcon";
 import CheckIcon from "@components/commons/Icons/CheckIcon.tsx";
 import XIcon from "@components/commons/Icons/XIcon.tsx";
+import { unEscapeHtml } from "@utils/convertText";
 import React from "react";
 import { QuizItemStyled } from "./style";
 import { QuizItemProps } from "./type";
@@ -32,7 +33,7 @@ const QuizItem = ({
     >
       <div className="quizContent">
         <p className="index">{index}. </p>
-        <p>{optionContent}</p>
+        <p>{unEscapeHtml(optionContent)}</p>
       </div>
 
       {selectOption === optionContent && isAnswered === undefined ? (
