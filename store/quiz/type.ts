@@ -10,5 +10,10 @@ export interface QuizItem {
 
 export interface Quiz {
   quizList: QuizItem[];
+  correctCount: number;
+  inCorrectCount: number;
   setQuizList: (quizList: QuizItem[]) => void;
+  setCorrectNumber: (count: number) => void;
+  setInCorrectNumber: (count: number) => void;
+
 }

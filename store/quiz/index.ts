@@ -4,6 +4,8 @@ import { Quiz, QuizItem } from "./type";
 
 const initialState = {
   quizList: [],
+  correctCount: 0,
+  inCorrectCount: 0,
 };
 
 export const quizStore = () =>
@@ -12,6 +14,12 @@ export const quizStore = () =>
       ...initialState,
       setQuizList: (quizList: QuizItem[]) => {
         set(() => ({ quizList: quizList }));
+      },
+      setCorrectNumber: (count: number) => {
+        set(() => ({ correctCount: count }));
+      },
+      setInCorrectNumber: (count: number) => {
+        set(() => ({ inCorrectCount: count }));
       },
     }))
   );
