@@ -13,8 +13,10 @@ export interface Quiz {
   correctCount: number;
   inCorrectCount: number;
   timer: string;
+  quizNumber: number;
   setQuizList: (quizList: QuizItem[]) => void;
   setCorrectNumber: (count: number) => void;
   setInCorrectNumber: (count: number) => void;
   setTimer: (time: string) => void;
+  setQuizNumber: (count: number) => void;
 }

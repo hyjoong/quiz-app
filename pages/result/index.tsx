@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useStore } from "@store/index";
 import Button from "@components/commons/Button";
 
 const index = () => {
-  const { correctCount, inCorrectCount,timer } = useStore()?.quizStore;
+  const {
+    correctCount,
+    inCorrectCount,
+    timer,
+    setQuizList,
+    setCorrectNumber,
+    setInCorrectNumber,
+    setTimer,
+    setQuizNumber,
+  } = useStore()?.quizStore;
 
   const router = useRouter();
+
+  useEffect(() => {
+    setQuizList([]);
+    setCorrectNumber(0);
+    setInCorrectNumber(0);
+    setTimer("0");
+    setQuizNumber(0);
+  }, []);
+
   return (
     <div>
       <p>정답 : {correctCount}</p>
