@@ -26,7 +26,6 @@ const QuizBox = () => {
     handleTryAgain,
     handlePage,
   } = useQuiz(quizList);
-
   return (
     <QuizBoxStyled>
       <div className="quiz-header">
@@ -63,7 +62,11 @@ const QuizBox = () => {
         ))}
       </QuizList>
       <AnswerResult isAnswered={isAnswered}>
-        {isAnswered === undefined ? "" : isAnswered ? "정답" : "오답"}
+        {isAnswered === undefined
+          ? ""
+          : isAnswered
+          ? "정답입니다"
+          : "오답입니다"}
       </AnswerResult>
       <ButtonWrapper>
         <Button
