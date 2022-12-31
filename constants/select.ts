@@ -26,3 +26,9 @@ export const QUIZ_DIFFICULTY = [
   { content: "MEDIUM", value: "medium" },
   { content: "HARD", value: "hard" },
 ];
+
+export const QUIZ_NUMBER = [
+  { content: "3문제", value: "3" },
+  { content: "5문제", value: "5" },
+  { content: "10문제", value: "10" },
+];

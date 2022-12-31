@@ -4,16 +4,19 @@ import { useStore } from "@store/index";
 import Button from "@components/commons/Button";
 import Dropdown from "@components/commons/Dropdown";
 import { OptionProps } from "@type/option";
-import { QUIZ_CATEGORY, QUIZ_DIFFICULTY } from "@constants/select";
+import { QUIZ_CATEGORY, QUIZ_DIFFICULTY, QUIZ_NUMBER } from "@constants/select";
 import { getQuiz } from "@lib/api/quiz";
 import { Quiz } from "@type/quiz";
 import { Loading } from "@components/commons/Icons/Loading";
+import { SelectOption, StyledMain } from "./style";
 
 const Main = () => {
   const router = useRouter();
 
   const [category, setCategory] = useState<OptionProps>(QUIZ_CATEGORY[0]);
   const [difficulty, setDifficulty] = useState<OptionProps>(QUIZ_DIFFICULTY[0]);
+  const [number, setNumber] = useState<OptionProps>(QUIZ_NUMBER[0]);
+
   const [isLoading, setIsLoading] = useState(false);
 
   const { quizStore } = useStore();
@@ -22,6 +25,7 @@ const Main = () => {
     const { data } = await getQuiz({
       category: category.value,
       difficulty: difficulty.value,
+      number: number.value,
     });
 
     const converData = data.results.map((item: Quiz) => {
@@ -34,31 +38,44 @@ const Main = () => {
     });
     quizStore?.setQuizList(converData);
     setIsLoading(false);
-    router.push("/quiz");
+    router.replace("/quiz");
   };
 
   return (
-    <div style={{ width: "600px" }}>
-      <span>Quiz Game</span>
-      <div style={{ display: "flex", width: "600px" }}>
-        <Dropdown
-          selectList={QUIZ_CATEGORY}
-          selectedItem={category}
-          setSelectOption={setCategory}
-        />
-
-        <Dropdown
-          selectList={QUIZ_DIFFICULTY}
-          selectedItem={difficulty}
-          setSelectOption={setDifficulty}
-        />
+    <StyledMain>
+      <h1>Quiz Game</h1>
+      <div className="option-list">
+        <SelectOption>
+          <h3>카테고리</h3>
+          <Dropdown
+            selectList={QUIZ_CATEGORY}
+            selectedItem={category}
+            setSelectOption={setCategory}
+          />
+        </SelectOption>
+        <SelectOption>
+          <h3>난이도</h3>
+          <Dropdown
+            selectList={QUIZ_DIFFICULTY}
+            selectedItem={difficulty}
+            setSelectOption={setDifficulty}
+          />
+        </SelectOption>
+        <SelectOption>
+          <h3>문제수</h3>
+          <Dropdown
+            selectList={QUIZ_NUMBER}
+            selectedItem={number}
+            setSelectOption={setNumber}
+          />
+        </SelectOption>
       </div>
       <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
         <Button size="lg" onClick={handleMoveQuizPage} disabled={isLoading}>
           {isLoading ? <Loading /> : "퀴즈 풀기"}
         </Button>
       </div>
-    </div>
+    </StyledMain>
   );
 };
 
