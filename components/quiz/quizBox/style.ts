@@ -2,16 +2,18 @@ import { styled } from "@lib/stitches.config";
 
 export const QuizBoxStyled = styled("div", {
   border: "2px solid $green",
+  height: "calc(100vh - 4px)",
 
   ".quiz-header": {
     display: "flex",
     justifyContent: "space-between",
+    padding: "0 40px",
   },
 
   ".quiz-question": {
     display: "flex",
     alignItems: "center",
-    height: "200px",
+    height: "300px",
     backgroundColor: "$green",
 
     "&:not(:last-child) >p": {
@@ -21,9 +23,9 @@ export const QuizBoxStyled = styled("div", {
       backgroundColor: "$white",
       borderRadius: "10px",
       display: "flex",
-      height: "90px",
+      height: "130px",
       alignItems: "center",
-      fontSize: "22px",
+      fontSize: "24px",
     },
   },
 });
@@ -51,6 +53,7 @@ export const QuizList = styled("ul", {
 export const ButtonWrapper = styled("div", {
   display: "flex",
   justifyContent: "space-between",
+  alignItems: "bottom",
   maxWidth: "300px",
   margin: "50px auto",
 });
