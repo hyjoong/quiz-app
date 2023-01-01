@@ -45,19 +45,19 @@
 // 카테고리 드롭다운 클릭
 fireEvent.click(categorySelector);
 QUIZ_CATEGORY.forEach((item) => {
-  expect(container).toHaveTextContent(item.content);
+  expect(screen.getAllByText(item.content));
 });
 
 // 난이도 드롭다운 클릭
 fireEvent.click(difficultySelector);
 QUIZ_DIFFICULTY.forEach((item) => {
-  expect(container).toHaveTextContent(item.content);
+  expect(screen.getAllByText(item.content));
 });
 
 // 문제수 드롭다운 클릭
 fireEvent.click(countSelector);
 QUIZ_NUMBER.forEach((item) => {
-  expect(container).toHaveTextContent(item.content);
+  expect(screen.getAllByText(item.content));
 });
 ```
 
@@ -66,27 +66,33 @@ QUIZ_NUMBER.forEach((item) => {
 - 퀴즈 난이도, 버튼, 보기가 보여진다.
 
 ```javascript
-it("퀴즈 문항에 대한 보기는 4개가 보여진다.", () => {
-  const { container } = render(<Quiz />);
-  expect(container.getElementsByClassName("quizContent").length).toBe(4);
+it("퀴즈 문항에 대한 보기는 4개가 보여진다.", async () => {
+  render(<Quiz />);
+  await waitFor(() => {
+    expect(screen.getAllByRole("listitem")).toHaveLength(4);
+  });
 });
 ```
 
 - 보기를 클릭하면 버튼이 활성화 되고 정답 여부를 확인할 수 있다.
 
 ```javascript
-const checkButton = getByText("정답 확인");
-const nextButton = getByText("다음 문제");
+const checkButton = screen.getByText("정답 확인");
+const nextButton = screen.getByText("다음 문제");
+
+expect(screen.queryByText("다시 풀기")).not.toBeInTheDocument();
 expect(checkButton).toBeDisabled();
 expect(nextButton).toBeDisabled();
 
-const correctItem = getByText("보기1");
+const correctItem = screen.getByText("보기1");
 fireEvent.click(correctItem);
-expect(checkButton).not.toBeDisabled();
+expect(checkButton).toBeEnabled();
 
+// 정답 확인 버튼을 클릭하면 정답 여부를 확인하고 정답 확인 -> 다시 풀기 버튼으로 바뀐다
 fireEvent.click(checkButton);
-expect(container).toHaveTextContent("정답입니다");
-expect(nextButton).not.toBeDisabled();
+expect(screen.getByText("정답입니다")).toBeInTheDocument();
+expect(screen.queryByText("정답 확인")).not.toBeInTheDocument();
+expect(screen.getByText("다시 풀기")).toBeInTheDocument();
 ```
 
 #### 3. [result.test.jsx](https://github.com/hyjoong/quiz-app/blob/master/__tests__/result.test.jsx)
