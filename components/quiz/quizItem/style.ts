@@ -5,7 +5,7 @@ const trembling = keyframes({
   to: { transform: "rotate(-0.3deg)" },
 });
 
-export const QuizItemStyled = styled("div", {
+export const QuizItemStyled = styled("li", {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
