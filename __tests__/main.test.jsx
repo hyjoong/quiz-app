@@ -27,24 +27,24 @@ describe("<Home />", () => {
   });
 
   it("selector click render test", () => {
-    const { container } = render(<Home />);
+    render(<Home />);
 
     // 카테고리 드롭다운 클릭
     fireEvent.click(categorySelector);
     QUIZ_CATEGORY.forEach((item) => {
-      expect(container).toHaveTextContent(item.content);
+      expect(screen.getAllByText(item.content));
     });
 
     // 난이도 드롭다운 클릭
     fireEvent.click(difficultySelector);
     QUIZ_DIFFICULTY.forEach((item) => {
-      expect(container).toHaveTextContent(item.content);
+      expect(screen.getAllByText(item.content));
     });
 
     // 문제수 드롭다운 클릭
     fireEvent.click(countSelector);
     QUIZ_NUMBER.forEach((item) => {
-      expect(container).toHaveTextContent(item.content);
+      expect(screen.getAllByText(item.content));
     });
   });
 });
