@@ -71,6 +71,7 @@ describe("quiz page render test", () => {
     fireEvent.click(inCorrectItem);
     fireEvent.click(checkButton);
     expect(screen.getByText("오답입니다")).toBeTruthy();
+    expect(screen.queryByText("정답 확인")).not.toBeInTheDocument();
     expect(screen.getByText("다시 풀기")).toBeInTheDocument();
   });
 });
