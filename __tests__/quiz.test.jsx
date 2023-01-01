@@ -50,14 +50,14 @@ describe("quiz page render test", () => {
     fireEvent.click(correctItem);
 
     // <button>정답 확인</button> 활성화
-    expect(checkButton).not.toBeDisabled();
+    expect(checkButton).toBeEnabled();
 
     // 정답인 보기를 클릭한 상태에서 정답 확인 버튼을 클릭하면 '정답입니다' 메세지를 확인할 수 있다
     fireEvent.click(checkButton);
     expect(container).toHaveTextContent("정답입니다");
 
     // <button>다음 문제</button> 활성화
-    expect(nextButton).not.toBeDisabled();
+    expect(nextButton).toBeEnabled();
 
     fireEvent.click(checkButton);
 
