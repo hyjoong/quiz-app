@@ -26,11 +26,11 @@ describe("quiz page render test", () => {
     expect(screen.findByText("정답:"));
     expect(screen.findByText("오답:"));
 
-    const checkButton = screen.getByText("정답 확인");
+    const checkButton = screen.getByRole("button", { name: /정답 확인/i });
     //getByText("정답 확인");
     expect(checkButton).toBeInTheDocument();
 
-    const nextButton = screen.getByText("다음 문제");
+    const nextButton = screen.getByRole("button", { name: /다음 문제/i });
     expect(nextButton).toBeInTheDocument();
   });
 
@@ -43,12 +43,14 @@ describe("quiz page render test", () => {
 
   it("보기를 클릭하고 '정답 확인'버튼을 클릭해서 정답 여부를 확인할 수 있다.", async () => {
     render(<Quiz />);
-    const checkButton = screen.getByText("정답 확인");
-    const nextButton = screen.getByText("다음 문제");
+    const checkButton = screen.getByRole("button", { name: /정답 확인/i });
+    const nextButton = screen.getByRole("button", { name: /다음 문제/i });
     expect(checkButton).toBeDisabled();
     expect(nextButton).toBeDisabled();
 
-    expect(screen.queryByText("다시 풀기")).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: /다시 풀기/i })
+    ).not.toBeInTheDocument();
 
     // 보기를 클릭하면 '정답확인', '다음문제' 버튼이 활성화 된다
     const correctItem = screen.getByText("보기1");
@@ -71,8 +73,12 @@ describe("quiz page render test", () => {
     fireEvent.click(inCorrectItem);
     fireEvent.click(checkButton);
     expect(screen.getByText("오답입니다")).toBeInTheDocument();
-    expect(screen.queryByText("정답 확인")).not.toBeInTheDocument();
-    expect(screen.getByText("다시 풀기")).toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: /정답 확인/i })
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /다시 풀기/i })
+    ).toBeInTheDocument();
   });
 });
 
