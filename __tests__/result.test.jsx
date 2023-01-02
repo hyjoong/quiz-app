@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import Result from "@pages/result/index";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { useStore } from "@store/index";
 
 jest.mock("next/router", () => ({
@@ -21,12 +21,16 @@ beforeEach(() => {
 
 describe("result page render test", () => {
   it("result render", () => {
-    const { getByText, container } = render(<Result />);
-    expect(container).toHaveTextContent("정답 : 3");
-    expect(container).toHaveTextContent("오답 : 7");
-    expect(container).toHaveTextContent("걸린 시간: 32.12초");
+    render(<Result />);
+    expect(screen.getByText("정답 : 3"));
+    expect(screen.getByText("오답 : 7"));
+    expect(screen.getByText("걸린 시간: 32.12초"));
 
-    const homeButton = getByText("홈으로");
+    const homeButton = screen.getByRole("button", { name: /홈으로/i });
     expect(homeButton).toBeInTheDocument();
   });
+});
+
+afterEach(() => {
+  quizStore.setQuizList([]);
 });
