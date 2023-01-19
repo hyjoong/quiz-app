@@ -41,41 +41,61 @@ describe("quiz page render test", () => {
     });
   });
 
-  it("보기를 클릭하고 '정답 확인'버튼을 클릭해서 정답 여부를 확인할 수 있다.", async () => {
+  test("button should be rendered", () => {
+    render(<Quiz />);
+
+    const checkButton = screen.getByRole("button", { name: /정답 확인/i });
+    expect(checkButton).toBeInTheDocument();
+  });
+
+  it("문제 보기를 클릭하면 '정답 확인'버튼이 활성화 된다.", () => {
+    render(<Quiz />);
+
+    const checkButton = screen.getByRole("button", { name: /정답 확인/i });
+    const quizItem = screen.getByText("보기1");
+
+    expect(checkButton).toBeDisabled();
+    fireEvent.click(quizItem);
+    expect(checkButton).toBeEnabled();
+  });
+
+  it("정답을 맞출 경우 정답 메세지를 확인할 수 있다.", () => {
+    render(<Quiz />);
+
+    const checkButton = screen.getByRole("button", { name: /정답 확인/i });
+    const correctItem = screen.getByText("보기1");
+
+    fireEvent.click(correctItem);
+    fireEvent.click(checkButton);
+    expect(screen.getByText("정답입니다"));
+  });
+
+  it("정답을 틀릴 경우 오답 메세지를 확인할 수 있다.", () => {
+    render(<Quiz />);
+    const checkButton = screen.getByRole("button", { name: /정답 확인/i });
+    const inCorrectItem = screen.getByText("보기2");
+
+    fireEvent.click(inCorrectItem);
+    fireEvent.click(checkButton);
+    expect(screen.getByText("오답입니다")).toBeInTheDocument();
+  });
+
+  it("정답을 확인할 경우 다시 풀기 버튼과 다음문제 버튼이 활성화 된다", () => {
     render(<Quiz />);
     const checkButton = screen.getByRole("button", { name: /정답 확인/i });
     const nextButton = screen.getByRole("button", { name: /다음 문제/i });
-    expect(checkButton).toBeDisabled();
-    expect(nextButton).toBeDisabled();
 
+    expect(nextButton).toBeDisabled();
     expect(
       screen.queryByRole("button", { name: /다시 풀기/i })
     ).not.toBeInTheDocument();
 
-    // 보기를 클릭하면 '정답확인', '다음문제' 버튼이 활성화 된다
-    const correctItem = screen.getByText("보기1");
-    fireEvent.click(correctItem);
+    const quizItem = screen.getByText("보기1");
+    fireEvent.click(quizItem);
 
-    // <button>정답 확인</button> 활성화
-    expect(checkButton).toBeEnabled();
-
-    // 정답인 보기를 클릭한 상태에서 정답 확인 버튼을 클릭하면 '정답입니다' 메세지를 확인할 수 있다
     fireEvent.click(checkButton);
-    expect(screen.getByText("정답입니다"));
 
-    // <button>다음 문제</button> 활성화
     expect(nextButton).toBeEnabled();
-
-    fireEvent.click(checkButton);
-
-    // 오답인 보기를 클릭한 상태에서 정답 확인 버튼을 클릭하면 '오답입니다' 메세지를 확인할 수 있다
-    const inCorrectItem = screen.getByText("보기2");
-    fireEvent.click(inCorrectItem);
-    fireEvent.click(checkButton);
-    expect(screen.getByText("오답입니다")).toBeInTheDocument();
-    expect(
-      screen.queryByRole("button", { name: /정답 확인/i })
-    ).not.toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: /다시 풀기/i })
     ).toBeInTheDocument();
