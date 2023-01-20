@@ -19,4 +19,5 @@ export interface Quiz {
   setInCorrectNumber: (count: number) => void;
   setTimer: (time: string) => void;
   setQuizNumber: (count: number) => void;
+  setResetStore: () => void;
 }

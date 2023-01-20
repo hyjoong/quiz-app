@@ -30,6 +30,7 @@ export const quizStore = () =>
         setQuizNumber: (count: number) => {
           set(() => ({ quizNumber: count }));
         },
+        setResetStore: () => set(() => ({ ...initialState })),
       }),
       {
         name: "quiz",
