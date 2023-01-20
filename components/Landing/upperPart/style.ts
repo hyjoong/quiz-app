@@ -3,7 +3,7 @@ import { styled } from "@lib/stitches.config";
 export const StyledMain = styled("div", {
   height: "calc(100vh - 4px)",
 
-  border: "2px solid $green",
+  // border: "2px solid $green",
   width: "100%",
   h1: {
     display: "flex",
@@ -15,6 +15,8 @@ export const StyledMain = styled("div", {
 
   ".option-list": {
     display: "flex",
+    width: "500px",
+    margin: "0 auto",
     height: "300px",
   },
 });

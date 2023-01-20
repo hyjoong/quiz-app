@@ -9,14 +9,14 @@ import { getQuiz } from "@lib/api/quiz";
 import { Quiz } from "@type/quiz";
 import { Loading } from "@components/commons/Icons/Loading";
 import { SelectOption, StyledMain } from "./style";
+import ScrollDownIndicator from "@components/commons/IndicatorBottom";
 
-const Main = () => {
+const UpperPart = () => {
   const router = useRouter();
 
   const [category, setCategory] = useState<OptionProps>(QUIZ_CATEGORY[0]);
   const [difficulty, setDifficulty] = useState<OptionProps>(QUIZ_DIFFICULTY[0]);
   const [number, setNumber] = useState<OptionProps>(QUIZ_NUMBER[0]);
-
   const [isLoading, setIsLoading] = useState(false);
 
   const { quizStore } = useStore();
@@ -75,8 +75,9 @@ const Main = () => {
           {isLoading ? <Loading /> : "퀴즈 풀기"}
         </Button>
       </div>
+      <ScrollDownIndicator />
     </StyledMain>
   );
 };
 
-export default Main;
+export default UpperPart;

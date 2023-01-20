@@ -1,10 +1,12 @@
 import BaseLayout from "@components/commons/BaseLayout";
-import Main from "@components/main";
+import Content from "@components/Landing/content";
+import UpperPart from "@components/Landing/upperPart";
 
 const Home = () => {
   return (
     <BaseLayout>
-      <Main />
+      <UpperPart />
+      <Content />
     </BaseLayout>
   );
 };
