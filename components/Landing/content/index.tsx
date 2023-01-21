@@ -2,11 +2,24 @@ import Image from "next/image";
 import React from "react";
 import { ContentStyled } from "./style";
 
-const Contents = () => {
+interface Props {
+  imgSrc: string;
+  detail: string;
+  isRevert?: boolean;
+}
+
+const Contents = ({ imgSrc, detail, isRevert = false }: Props) => {
   return (
-    <ContentStyled>
-      <Image src="/images/problem.png" width={400} height={500} alt="problem" />
-      <h1>문제를 풀고 정답 여부를 확인할 수 있습니다</h1>
+    <ContentStyled isRevert={isRevert}>
+      <Image
+        src={`/images/${imgSrc}.png`}
+        width={400}
+        height={500}
+        alt="problem"
+      />
+      <div className="info">
+        <h1>{detail}</h1>
+      </div>
     </ContentStyled>
   );
 };
