@@ -2,17 +2,16 @@ import { styled } from "@lib/stitches.config";
 
 export const ResultInfoStyled = styled("div", {
   width: "100%",
-  height: "calc(100vh - 2px)",
+  height: "calc(100vh - 64px)",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
 });
 
 export const InfoBox = styled("div", {
-  width: "200px",
+  width: "250px",
   height: "100px",
-  border: "1px solid $green",
-  padding: "60px",
+  padding: "30px",
 
   p: {
     fontSize: "20px",
