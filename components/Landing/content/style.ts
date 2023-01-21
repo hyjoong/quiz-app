@@ -1,8 +1,13 @@
 import { keyframes, styled } from "@lib/stitches.config";
 
-const appearGradually = keyframes({
-  from: { opacity: 0 },
-  to: { opacity: 1 },
+const leftToRight = keyframes({
+  from: { opacity: 0, transform: "translate3d(-100%, 0, 0)" },
+  to: { opacity: 1, transform: " translateZ(0)" },
+});
+
+const rightToLeft = keyframes({
+  from: { opacity: 0, transform: "translate3d(100%, 0, 0)" },
+  to: { opacity: 1, transform: " translateZ(0)" },
 });
 
 export const ContentStyled = styled("div", {
@@ -31,11 +36,18 @@ export const ContentStyled = styled("div", {
         flexDirection: "row-reverse",
       },
     },
-
-    isInViewport: {
-      true: {
-        animation: `${appearGradually} 1.5s`,
+  },
+});
+export const ImageBox = styled("div", {
+  variants: {
+    isViewDirection: {
+      left: {
+        animation: `${rightToLeft} 1.5s`,
       },
+      right: {
+        animation: `${leftToRight} 1.5s`,
+      },
+      none: {},
     },
   },
 });
