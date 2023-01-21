@@ -1,16 +1,19 @@
+import React, { useRef } from "react";
 import Image from "next/image";
-import React from "react";
+import useIntersectionObsever from "@hooks/useIntersectionObserver";
 import { ContentStyled } from "./style";
-
-interface Props {
-  imgSrc: string;
-  detail: string;
-  isRevert?: boolean;
-}
+import { Props } from "./type";
 
 const Contents = ({ imgSrc, detail, isRevert = false }: Props) => {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const isViewport = useIntersectionObsever(contentRef);
+
   return (
-    <ContentStyled isRevert={isRevert}>
+    <ContentStyled
+      isRevert={isRevert}
+      ref={contentRef}
+      isInViewport={isViewport}
+    >
       <Image
         src={`/images/${imgSrc}.png`}
         width={400}

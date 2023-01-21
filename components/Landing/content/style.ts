@@ -1,4 +1,9 @@
-import { styled } from "@lib/stitches.config";
+import { keyframes, styled } from "@lib/stitches.config";
+
+const appearGradually = keyframes({
+  from: { opacity: 0 },
+  to: { opacity: 1 },
+});
 
 export const ContentStyled = styled("div", {
   display: "flex",
@@ -7,15 +12,16 @@ export const ContentStyled = styled("div", {
   margin: "90px 0 ",
 
   ".info": {
-    display: "flex",
-    justifyContent: "center",
-
     h1: {
-      marginTop: "10px",
-      fontSize: "20px",
-      fontWeight: 600,
+      display: "flex",
+      justifyContent: "center",
+      padding: "0 70px",
       textAlign: "center",
-      lineHeight: "24px",
+      fontSize: "26px",
+      wordBreak: "keep-all",
+      lineHeight: "40px",
+      marginTop: "10px",
+      fontWeight: 600,
     },
   },
 
@@ -23,6 +29,12 @@ export const ContentStyled = styled("div", {
     isRevert: {
       true: {
         flexDirection: "row-reverse",
+      },
+    },
+
+    isInViewport: {
+      true: {
+        animation: `${appearGradually} 1.5s`,
       },
     },
   },
