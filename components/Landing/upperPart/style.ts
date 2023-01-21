@@ -2,9 +2,19 @@ import { styled } from "@lib/stitches.config";
 
 export const StyledMain = styled("div", {
   height: "calc(100vh - 4px)",
-
-  // border: "2px solid $green",
   width: "100%",
+
+  ".button-box": {
+    display: "flex",
+    justifyContent: "flex-end",
+
+    ".btn-lang": {
+      padding: "10px",
+      borderRadius: "50%",
+      marginRight: "5px",
+    },
+  },
+
   h1: {
     display: "flex",
     justifyContent: "center",

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useStore } from "@store/index";
 import Button from "@components/commons/Button";
@@ -10,9 +10,13 @@ import { Quiz } from "@type/quiz";
 import { Loading } from "@components/commons/Icons/Loading";
 import { SelectOption, StyledMain } from "./style";
 import ScrollDownIndicator from "@components/commons/IndicatorBottom";
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 const UpperPart = () => {
   const router = useRouter();
+  const { t } = useTranslation("common");
+  const { locale } = useRouter();
 
   const [category, setCategory] = useState<OptionProps>(QUIZ_CATEGORY[0]);
   const [difficulty, setDifficulty] = useState<OptionProps>(QUIZ_DIFFICULTY[0]);
@@ -43,10 +47,31 @@ const UpperPart = () => {
 
   return (
     <StyledMain>
-      <h1>Quiz Game</h1>
+      <div>
+        <h1>{t(`title`)}</h1>
+      </div>
+      <div className="button-box">
+        <Link href="/" locale={"en"}>
+          <Button
+            className="btn-lang"
+            StyleType={locale === "en" ? "filled" : "normal"}
+          >
+            en
+          </Button>
+        </Link>
+        <Link href="/" locale={"ko"}>
+          <Button
+            className="btn-lang"
+            StyleType={locale === "ko" ? "filled" : "normal"}
+          >
+            ko
+          </Button>
+        </Link>
+      </div>
+
       <div className="option-list">
         <SelectOption>
-          <h3>카테고리</h3>
+          <h3>{t("category")}</h3>
           <Dropdown
             selectList={QUIZ_CATEGORY}
             selectedItem={category}
@@ -54,7 +79,7 @@ const UpperPart = () => {
           />
         </SelectOption>
         <SelectOption>
-          <h3>난이도</h3>
+          <h3>{t("difficulty")}</h3>
           <Dropdown
             selectList={QUIZ_DIFFICULTY}
             selectedItem={difficulty}
@@ -62,7 +87,7 @@ const UpperPart = () => {
           />
         </SelectOption>
         <SelectOption>
-          <h3>문제수</h3>
+          <h3>{t("count")}</h3>
           <Dropdown
             selectList={QUIZ_NUMBER}
             selectedItem={number}
@@ -70,9 +95,9 @@ const UpperPart = () => {
           />
         </SelectOption>
       </div>
-      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <Button size="lg" onClick={handleMoveQuizPage} disabled={isLoading}>
-          {isLoading ? <Loading /> : "퀴즈 풀기"}
+          {isLoading ? <Loading /> : t("start")}
         </Button>
       </div>
       <ScrollDownIndicator />
