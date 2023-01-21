@@ -3,11 +3,13 @@ import Image from "next/image";
 import useIntersectionObsever from "@hooks/useIntersectionObserver";
 import { ContentStyled } from "./style";
 import { Props } from "./type";
+import { useTranslation } from "next-i18next";
 
 const Contents = ({ imgSrc, detail, isRevert = false }: Props) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const isViewport = useIntersectionObsever(contentRef);
 
+  const { t } = useTranslation("common");
   return (
     <ContentStyled
       isRevert={isRevert}
@@ -21,7 +23,7 @@ const Contents = ({ imgSrc, detail, isRevert = false }: Props) => {
         alt="problem"
       />
       <div className="info">
-        <h1>{detail}</h1>
+        <h1>{t(`${detail}`)}</h1>
       </div>
     </ContentStyled>
   );
