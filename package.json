@@ -11,6 +11,8 @@
     "test:ci": "jest --ci --passWithNoTests"
   },
   "dependencies": {
+    "@nivo/core": "^0.80.0",
+    "@nivo/pie": "^0.80.0",
     "@stitches/react": "^1.2.8",
     "@types/node": "18.11.11",
     "@types/react": "18.0.26",
