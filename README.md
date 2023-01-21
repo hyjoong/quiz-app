@@ -16,7 +16,7 @@
   - [x] 퀴즈를 마칠 때까지 소요된 시간
   - [x] 정답 개수
   - [x] 오답 수
-  - [ ] 정 오답에 대한 비율을 차트로 표기
+  - [x] 정 오답에 대한 비율을 차트로 표기
 - [ ] 오답 노트 기능
 
 #### 1. 사용자는 메인 페이지에서 카테고리, 난이도, 문제 수를 설정하고 퀴즈 풀기 버튼을 클릭해서 생성하고 quiz 페이지로 이동된다.
@@ -47,18 +47,7 @@ fireEvent.click(categorySelector);
 QUIZ_CATEGORY.forEach((item) => {
   expect(screen.getAllByText(item.content));
 });
-
-// 난이도 드롭다운 클릭
-fireEvent.click(difficultySelector);
-QUIZ_DIFFICULTY.forEach((item) => {
-  expect(screen.getAllByText(item.content));
-});
-
-// 문제수 드롭다운 클릭
-fireEvent.click(countSelector);
-QUIZ_NUMBER.forEach((item) => {
-  expect(screen.getAllByText(item.content));
-});
+...
 ```
 
 #### 2. [quiz.test.jsx](https://github.com/hyjoong/quiz-app/blob/master/__tests__/quiz.test.jsx)
@@ -66,35 +55,24 @@ QUIZ_NUMBER.forEach((item) => {
 - 퀴즈 난이도, 버튼, 보기가 보여진다.
 
 ```javascript
-it("퀴즈 문항에 대한 보기는 4개가 보여진다.", async () => {
-  render(<Quiz />);
-  await waitFor(() => {
-    expect(screen.getAllByRole("listitem")).toHaveLength(4);
-  });
-});
-```
-
-- 보기를 클릭하면 버튼이 활성화 되고 정답 여부를 확인할 수 있다.
-
-```javascript
-const checkButton = screen.getByText("정답 확인");
-const nextButton = screen.getByText("다음 문제");
-
-expect(screen.queryByText("다시 풀기")).not.toBeInTheDocument();
-expect(checkButton).toBeDisabled();
-expect(nextButton).toBeDisabled();
-
-const correctItem = screen.getByText("보기1");
-fireEvent.click(correctItem);
-expect(checkButton).toBeEnabled();
-
-// 정답 확인 버튼을 클릭하면 정답 여부를 확인하고 정답 확인 -> 다시 풀기 버튼으로 바뀐다
-fireEvent.click(checkButton);
-expect(screen.getByText("정답입니다")).toBeInTheDocument();
-expect(screen.queryByText("정답 확인")).not.toBeInTheDocument();
-expect(screen.getByText("다시 풀기")).toBeInTheDocument();
+it("퀴즈 문항에 대한 보기는 4개가 보여진다.", async () => {...});
+it("문제 보기를 클릭하면 '정답 확인'버튼이 활성화 된다.", () => {...});
+it("정답을 맞출 경우 정답 메세지를 확인할 수 있다.", () => {...});
+it("정답을 틀릴 경우 오답 메세지를 확인할 수 있다.", () => {...});
+it("정답을 확인할 경우 다시 풀기 버튼과 다음문제 버튼이 활성화 된다", () => {....});
 ```
 
 #### 3. [result.test.jsx](https://github.com/hyjoong/quiz-app/blob/master/__tests__/result.test.jsx)
 
-- 퀴즈 결과를 확인할 수 있다.
+- 퀴즈 결과 페이지에서 맞춘 문제 수와 틀린 문제 수를 확인할 수 있다.
+
+### 1. 메인 페이지
+
+<img width="622" alt="image" src="https://user-images.githubusercontent.com/70426440/213844850-5c790191-1b5a-4824-a19b-e14e8e8169c8.png">
+
+### 2. 퀴즈 페이지
+
+<img width="815" alt="image" src="https://user-images.githubusercontent.com/70426440/213844877-e7edfd3d-0139-43c7-90ec-aeedae1a6183.png">
+
+### 3. 결과 페이지
+<img width="796" alt="result" src="https://user-images.githubusercontent.com/70426440/213844914-545986e7-d495-4d6a-81a1-574b7609589c.png">
