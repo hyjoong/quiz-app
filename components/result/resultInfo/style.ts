@@ -2,6 +2,7 @@ import { styled } from "@lib/stitches.config";
 
 export const ResultInfoStyled = styled("div", {
   width: "100%",
+  maxWidth: "800px",
   height: "calc(100vh - 64px)",
   display: "flex",
   alignItems: "center",

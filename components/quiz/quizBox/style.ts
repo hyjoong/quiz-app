@@ -1,6 +1,8 @@
 import { styled } from "@lib/stitches.config";
 
 export const QuizBoxStyled = styled("div", {
+  width: "800px",
+  margin: "0 auto",
   border: "2px solid $green",
   height: "calc(100vh - 4px)",
 
