@@ -1,8 +1,12 @@
+## [배포 주소](https://quizs-app.vercel.app)
+
 ### Skills
 
 - Next.Js
 - Stitches CSS
 - Zustand
+- nivo/pie
+- i18n
 
 ### Requirements
 
@@ -38,9 +42,6 @@
 
 #### 1. [main.test.jsx](https://github.com/hyjoong/quiz-app/blob/master/__tests__/main.test.jsx)
 
-- 퀴즈 타이틀, 버튼, 드롭다운이 보여진다.
-- 드롭다운을 클릭하면 드롭다운 리스트들이 보여진다
-
 ```javascript
 // 카테고리 드롭다운 클릭
 fireEvent.click(categorySelector);
@@ -52,8 +53,6 @@ QUIZ_CATEGORY.forEach((item) => {
 
 #### 2. [quiz.test.jsx](https://github.com/hyjoong/quiz-app/blob/master/__tests__/quiz.test.jsx)
 
-- 퀴즈 난이도, 버튼, 보기가 보여진다.
-
 ```javascript
 it("퀴즈 문항에 대한 보기는 4개가 보여진다.", async () => {...});
 it("문제 보기를 클릭하면 '정답 확인'버튼이 활성화 된다.", () => {...});
@@ -64,15 +63,18 @@ it("정답을 확인할 경우 다시 풀기 버튼과 다음문제 버튼이 �
 
 #### 3. [result.test.jsx](https://github.com/hyjoong/quiz-app/blob/master/__tests__/result.test.jsx)
 
-- 퀴즈 결과 페이지에서 맞춘 문제 수와 틀린 문제 수를 확인할 수 있다.
-
 ### 1. 메인 페이지
 
-<img width="622" alt="image" src="https://user-images.githubusercontent.com/70426440/213844850-5c790191-1b5a-4824-a19b-e14e8e8169c8.png">
+사용자는 우측에 en, ko 버튼을 클릭해서 언어를 선택할 수 있습니다
+
+<img width="800" alt="main" src="https://user-images.githubusercontent.com/70426440/213899213-acced543-c77d-41a3-a8b8-bc8d7a3cc00b.png">
+<img width="800" alt="ko-landing" src="https://user-images.githubusercontent.com/70426440/213899408-d229574e-5df9-44af-8f1d-851bd6fb1970.png">
+<img width="800" alt="en-landing" src="https://user-images.githubusercontent.com/70426440/213899410-eb0cb82d-ac52-40d7-9957-58f55223c49c.png">
 
 ### 2. 퀴즈 페이지
 
-<img width="815" alt="image" src="https://user-images.githubusercontent.com/70426440/213844877-e7edfd3d-0139-43c7-90ec-aeedae1a6183.png">
+<img width="800" alt="quiz" src="https://user-images.githubusercontent.com/70426440/213844877-e7edfd3d-0139-43c7-90ec-aeedae1a6183.png">
 
 ### 3. 결과 페이지
-<img width="796" alt="result" src="https://user-images.githubusercontent.com/70426440/213844914-545986e7-d495-4d6a-81a1-574b7609589c.png">
+
+<img width="800" alt="result" src="https://user-images.githubusercontent.com/70426440/213844914-545986e7-d495-4d6a-81a1-574b7609589c.png">
