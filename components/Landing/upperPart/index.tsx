@@ -11,7 +11,7 @@ import { Loading } from "@components/commons/Icons/Loading";
 import { SelectOption, StyledMain } from "./style";
 import ScrollDownIndicator from "@components/commons/IndicatorBottom";
 import Link from "next/link";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 
 const UpperPart = () => {
   const router = useRouter();
@@ -48,7 +48,7 @@ const UpperPart = () => {
   return (
     <StyledMain>
       <div>
-        <h1>{t(`title`)}</h1>
+        <h1>{t("title")}</h1>
       </div>
       <div className="button-box">
         <Link href="/" locale={"en"}>
