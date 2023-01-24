@@ -33,7 +33,8 @@ class MyDocument extends Document {
 
           <link
             href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
-            rel="stylesheet"
+            rel="preload"
+            as="font"
           />
         </Head>
 
