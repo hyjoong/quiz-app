@@ -15,7 +15,7 @@ export const StyledMain = styled("div", {
     },
   },
 
-  h1: {
+  ">p": {
     display: "flex",
     justifyContent: "center",
     fontSize: "28px",

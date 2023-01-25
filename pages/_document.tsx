@@ -26,6 +26,8 @@ class MyDocument extends Document {
     return (
       <Html lang="ko">
         <Head>
+          <title>Quiz</title>
+          <meta name="description" content="quiz app" />
           <style
             id="stitches"
             dangerouslySetInnerHTML={{ __html: getCssText() }}

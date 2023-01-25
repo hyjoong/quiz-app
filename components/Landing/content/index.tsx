@@ -13,14 +13,12 @@ const Contents = ({ imgSrc, detail, isRevert = false }: Props) => {
   return (
     <ContentStyled isRevert={isRevert} ref={contentRef}>
       <ImageBox
-        isViewDirection={
-          isViewport ? (isRevert ? "left" : "right") : "none"
-        }
+        isViewDirection={isViewport ? (isRevert ? "left" : "right") : "none"}
       >
         <Image
           src={`/images/${imgSrc}.png`}
-          width={400}
-          height={500}
+          width={420}
+          height={400}
           alt="problem"
         />
       </ImageBox>

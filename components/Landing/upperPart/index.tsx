@@ -47,9 +47,8 @@ const UpperPart = () => {
 
   return (
     <StyledMain>
-      <div>
-        <h1>{t("title")}</h1>
-      </div>
+      <p>{t("title")}</p>
+
       <div className="button-box">
         <Link href="/" locale={"en"}>
           <Button
