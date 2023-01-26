@@ -1,9 +1,12 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import BaseLayout from "@components/commons/BaseLayout";
-import Content from "@components/Landing/content";
 import UpperPart from "@components/Landing/upperPart";
+import dynamic from "next/dynamic";
 
 const Home = () => {
+  const Content = dynamic(() => import("@components/Landing/content"), {
+    ssr: false,
+  });
   return (
     <BaseLayout>
       <UpperPart />
