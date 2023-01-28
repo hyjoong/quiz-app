@@ -16,7 +16,7 @@ const { quizStore } = useStore();
 beforeEach(() => {
   quizStore.setCorrectNumber(3);
   quizStore.setInCorrectNumber(7);
-  quizStore.setTimer("32.12");
+  quizStore.setTimer("1:12");
 });
 
 describe("result page render test", () => {
@@ -24,7 +24,7 @@ describe("result page render test", () => {
     render(<Result />);
     expect(screen.getByText("정답 : 3"));
     expect(screen.getByText("오답 : 7"));
-    expect(screen.getByText("걸린 시간: 32.12초"));
+    expect(screen.getByText("걸린 시간: 1:12"));
 
     const homeButton = screen.getByRole("button", { name: /홈으로/i });
     expect(homeButton).toBeInTheDocument();

@@ -21,6 +21,7 @@ const QuizBox = () => {
     correctCount,
     inCorrectCount,
     quizNumber,
+    elapsedTime,
     handleSubmit,
     handleSelectOption,
     handleTryAgain,
@@ -35,6 +36,7 @@ const QuizBox = () => {
             {quizNumber + 1}/{quizList.length}
           </p>
         </div>
+        <p className="timer">{elapsedTime}</p>
         <div>
           <AnswerCount isCorrect={true}>
             <p>정답: {correctCount}</p>

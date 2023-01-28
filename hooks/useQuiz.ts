@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useStore } from "@store/index";
 
 const useQuiz = (quizList: any) => {
   const [isAnswered, setIsAnswered] = useState<undefined | boolean>(undefined);
   const [selectOption, setSelectOption] = useState("");
-  const time = performance.now() / 1000;
   const router = useRouter();
+  const [elapsedTime, setElapsedTime] = useState("0:00");
+
+  useEffect(() => {
+    let start = Date.now();
+    const intervalId = setInterval(() => {
+      const elapsed = Date.now() - start;
+      const minutes = Math.floor(elapsed / 60000);
+      const seconds = ((elapsed % 60000) / 1000).toFixed(0);
+      setElapsedTime(`${minutes}:${seconds.padStart(2, "0")}`);
+    }, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
 
   const {
     correctCount,
@@ -43,7 +54,7 @@ const useQuiz = (quizList: any) => {
 
   const handlePage = () => {
     if (quizList.length === quizNumber + 1) {
-      setTimer(time.toFixed(2));
+      setTimer(elapsedTime);
       router.push("/result");
       return;
     }
@@ -58,6 +69,7 @@ const useQuiz = (quizList: any) => {
     correctCount,
     inCorrectCount,
     quizNumber,
+    elapsedTime,
     handleSubmit,
     handleSelectOption,
     handleTryAgain,

@@ -10,6 +10,12 @@ export const QuizBoxStyled = styled("div", {
     display: "flex",
     justifyContent: "space-between",
     padding: "0 40px",
+
+    ".timer": {
+      width: "70px",
+      display: "flex",
+      alignItems: "center",
+    },
   },
 
   ".quiz-question": {
