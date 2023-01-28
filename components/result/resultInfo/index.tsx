@@ -5,11 +5,12 @@ import Button from "@components/commons/Button";
 import { InfoBox, ResultInfoStyled } from "./style";
 import dynamic from "next/dynamic";
 import { Pie } from "@components/chart/pieChart/type";
+import PieChart from "@components/chart/pieChart";
 
 const ResultInfo = () => {
-  const PieChart = dynamic(() => import("@components/chart/pieChart"), {
-    ssr: false,
-  });
+  // const PieChart = dynamic(() => import("@components/chart/pieChart"), {
+  //   ssr: false,
+  // });
   const router = useRouter();
 
   const { setResetStore, correctCount, inCorrectCount, timer } =
@@ -38,7 +39,7 @@ const ResultInfo = () => {
       <InfoBox>
         <p>정답 : {correctCount}</p>
         <p>오답 : {inCorrectCount}</p>
-        <p>걸린 시간: {timer}초</p>
+        <p>걸린 시간: {timer}</p>
         <Button size="md" onClick={() => router.push("/")}>
           홈으로
         </Button>
