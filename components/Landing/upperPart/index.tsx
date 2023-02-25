@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useStore } from "@store/index";
 import Button from "@components/commons/Button";
 import Dropdown from "@components/commons/Dropdown";
 import { OptionProps } from "@type/option";
-import { QUIZ_CATEGORY, QUIZ_DIFFICULTY, QUIZ_NUMBER } from "@constants/select";
+import {
+  QUIZ_CATEGORY,
+  QUIZ_DIFFICULTY,
+  QUIZ_NUMBER,
+  QUIZ_TYPE,
+} from "@constants/select";
 import { getQuiz } from "@lib/api/quiz";
 import { Quiz } from "@type/quiz";
 import { Loading } from "@components/commons/Icons/Loading";
@@ -21,6 +26,7 @@ const UpperPart = () => {
   const [category, setCategory] = useState<OptionProps>(QUIZ_CATEGORY[0]);
   const [difficulty, setDifficulty] = useState<OptionProps>(QUIZ_DIFFICULTY[0]);
   const [number, setNumber] = useState<OptionProps>(QUIZ_NUMBER[0]);
+  const [quizType, setQuizType] = useState(QUIZ_TYPE[0]);
   const [isLoading, setIsLoading] = useState(false);
 
   const { quizStore } = useStore();
@@ -42,6 +48,8 @@ const UpperPart = () => {
     });
     quizStore?.setQuizList(converData);
     setIsLoading(false);
+    const isLimitTime = quizType.content === "있음";
+    quizStore?.toggleTimeLimit(isLimitTime);
     router.replace("/quiz");
   };
 
@@ -91,6 +99,14 @@ const UpperPart = () => {
             selectList={QUIZ_NUMBER}
             selectedItem={number}
             setSelectOption={setNumber}
+          />
+        </SelectOption>
+        <SelectOption>
+          <h3>{t("timelimit")}</h3>
+          <Dropdown
+            selectList={QUIZ_TYPE}
+            selectedItem={quizType}
+            setSelectOption={setQuizType}
           />
         </SelectOption>
       </div>
