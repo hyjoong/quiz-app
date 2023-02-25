@@ -8,6 +8,7 @@ const initialState = {
   inCorrectCount: 0,
   quizNumber: 0,
   timer: "0",
+  hasTimeLimit: false,
 };
 
 export const quizStore = () =>
@@ -29,6 +30,9 @@ export const quizStore = () =>
         },
         setQuizNumber: (count: number) => {
           set(() => ({ quizNumber: count }));
+        },
+        toggleTimeLimit: (hasTimeLimit: boolean) => {
+          set(() => ({ hasTimeLimit }));
         },
         setResetStore: () => set(() => ({ ...initialState })),
       }),

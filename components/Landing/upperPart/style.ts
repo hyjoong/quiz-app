@@ -25,7 +25,7 @@ export const StyledMain = styled("div", {
 
   ".option-list": {
     display: "flex",
-    width: "500px",
+    width: "700px",
     margin: "0 auto",
     height: "300px",
   },

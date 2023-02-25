@@ -6,5 +6,6 @@
   "category": "카테고리",
   "difficulty": "난이도",
   "count": "문제수",
-  "start": "퀴즈 풀기"
+  "start": "퀴즈 풀기",
+  "timelimit": "시간 제한"
 }

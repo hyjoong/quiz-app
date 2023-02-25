@@ -6,5 +6,6 @@
   "category": "Category",
   "difficulty": "Difficulty",
   "count": "Count",
-  "start": "Start"
+  "start": "Start",
+  "timelimit": "Time Limit"
 }

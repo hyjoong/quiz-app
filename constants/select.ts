@@ -32,3 +32,8 @@ export const QUIZ_NUMBER = [
   { content: "5문제", value: "5" },
   { content: "10문제", value: "10" },
 ];
+
+export const QUIZ_TYPE = [
+  { content: "있음", value: "limitedTime" },
+  { content: "없음", value: "unLimitedTime" },
+];

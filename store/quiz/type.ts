@@ -20,4 +20,5 @@ export interface Quiz {
   setTimer: (time: string) => void;
   setQuizNumber: (count: number) => void;
   setResetStore: () => void;
+  hasTimeLimit: boolean;
 }
