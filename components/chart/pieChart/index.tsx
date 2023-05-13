@@ -1,5 +1,6 @@
 import React from "react";
 import { ResponsivePie } from "@nivo/pie";
+import { linearGradientDef } from "@nivo/core";
 import { Props } from "./type";
 
 const PieChart = ({ data }: Props) => {
@@ -12,10 +13,21 @@ const PieChart = ({ data }: Props) => {
       cornerRadius={3}
       activeOuterRadiusOffset={8}
       borderWidth={1}
-      borderColor={{
-        from: "color",
-        modifiers: [["darker", 0.2]],
-      }}
+      defs={[
+        linearGradientDef("gradientA", [
+          { offset: 0, color: "#38bcb2" },
+          { offset: 100, color: "#38bcb2", opacity: 0 },
+        ]),
+        linearGradientDef("gradientB", [
+          { offset: 0, color: "#ff0044" },
+          { offset: 100, color: "#ff0044", opacity: 0 },
+        ]),
+      ]}
+      fill={[
+        { match: { id: "correct" }, id: "gradientA" },
+        { match: { id: "wrong" }, id: "gradientB" },
+      ]}
+      borderColor={"#EEEEEE"}
       arcLinkLabelsSkipAngle={10}
       arcLinkLabelsTextColor="#333333"
       arcLinkLabelsThickness={2}
