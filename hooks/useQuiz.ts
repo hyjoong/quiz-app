@@ -6,9 +6,13 @@ const useQuiz = (quizList: any) => {
   const [isAnswered, setIsAnswered] = useState<undefined | boolean>(undefined);
   const [selectOption, setSelectOption] = useState("");
   const router = useRouter();
-  const [elapsedTime, setElapsedTime] = useState("0:00");
+  const { quizStore } = useStore();
+  const { hasTimeLimit } = quizStore;
+  const [elapsedTime, setElapsedTime] = useState(
+    hasTimeLimit ? "0:10" : "0:00"
+  );
 
-  useEffect(() => {
+  const increaseTime = () => {
     let start = Date.now();
     const intervalId = setInterval(() => {
       const elapsed = Date.now() - start;
@@ -17,7 +21,37 @@ const useQuiz = (quizList: any) => {
       setElapsedTime(`${minutes}:${seconds.padStart(2, "0")}`);
     }, 1000);
     return () => clearInterval(intervalId);
-  }, []);
+  };
+
+  const decreaseTime = () => {
+    const intervalId = setInterval(() => {
+      setElapsedTime((prevTime) => {
+        const [minutes, seconds] = prevTime.split(":");
+        if (parseInt(seconds) === 0 && parseInt(minutes) === 0) {
+          clearInterval(intervalId);
+          return prevTime;
+        } else {
+          return `${minutes}:${(parseInt(seconds) - 1)
+            .toString()
+            .padStart(2, "0")}`;
+        }
+      });
+    }, 1000);
+    return () => clearInterval(intervalId);
+  };
+  useEffect(() => {
+    if (hasTimeLimit) {
+      if (elapsedTime === "0:00") {
+        handleSubmit();
+        return;
+      }
+      const cleanup = decreaseTime();
+      return cleanup;
+    } else {
+      const cleanup = increaseTime();
+      return cleanup;
+    }
+  }, [decreaseTime, increaseTime, hasTimeLimit]);
 
   const {
     correctCount,
