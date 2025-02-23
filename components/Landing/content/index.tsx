@@ -19,7 +19,9 @@ const Contents = ({ imgSrc, detail, isRevert = false }: Props) => {
           src={`/images/${imgSrc}.png`}
           width={420}
           height={400}
-          alt="problem"
+          alt={detail}
+          priority
+          sizes="(max-width: 768px) 280px, 420px"
         />
       </ImageBox>
       <div className="info">

@@ -13,21 +13,35 @@ const rightToLeft = keyframes({
 export const ContentStyled = styled("div", {
   display: "flex",
   justifyContent: "space-between",
-  height: "500px",
-  margin: "90px 0 ",
+  alignItems: "center",
+  minHeight: "400px",
+  margin: "60px 0",
+  gap: "20px",
 
   ".info": {
+    flex: 1,
     h1: {
       display: "flex",
       justifyContent: "center",
-      padding: "0 70px",
+      padding: "0 20px",
       textAlign: "center",
       fontSize: "26px",
       wordBreak: "keep-all",
-      lineHeight: "40px",
+      lineHeight: "1.5",
       marginTop: "10px",
       fontWeight: 600,
+
+      "@md": {
+        fontSize: "20px",
+        padding: "0 10px",
+      },
     },
+  },
+
+  "@md": {
+    flexDirection: "column",
+    margin: "40px 0",
+    minHeight: "300px",
   },
 
   variants: {
@@ -38,7 +52,24 @@ export const ContentStyled = styled("div", {
     },
   },
 });
+
 export const ImageBox = styled("div", {
+  flex: 1,
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+
+  img: {
+    maxWidth: "100%",
+    height: "auto",
+    objectFit: "contain",
+
+    "@md": {
+      width: "280px",
+      height: "260px",
+    },
+  },
+
   variants: {
     isViewDirection: {
       left: {

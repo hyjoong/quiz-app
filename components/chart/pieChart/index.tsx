@@ -13,6 +13,7 @@ const PieChart = ({ data }: Props) => {
       cornerRadius={3}
       activeOuterRadiusOffset={8}
       borderWidth={1}
+      colors={{ datum: "data.color" }}
       defs={[
         linearGradientDef("gradientA", [
           { offset: 0, color: "#38bcb2" },
@@ -43,9 +44,10 @@ const PieChart = ({ data }: Props) => {
           direction: "row",
           justify: false,
           translateX: 0,
-          itemsSpacing: 0,
+          translateY: 50,
+          itemsSpacing: 20,
           itemWidth: 80,
-          itemHeight: 8,
+          itemHeight: 20,
           itemTextColor: "#999",
           itemDirection: "left-to-right",
           itemOpacity: 1,

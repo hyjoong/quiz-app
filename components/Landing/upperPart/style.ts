@@ -1,19 +1,10 @@
 import { styled } from "@lib/stitches.config";
 
 export const StyledMain = styled("div", {
-  height: "calc(100vh - 4px)",
+  minHeight: "calc(100vh - 4px)",
   width: "100%",
-
-  ".button-box": {
-    display: "flex",
-    justifyContent: "flex-end",
-
-    ".btn-lang": {
-      padding: "10px",
-      borderRadius: "50%",
-      marginRight: "5px",
-    },
-  },
+  padding: "20px",
+  boxSizing: "border-box",
 
   ">p": {
     display: "flex",
@@ -21,26 +12,87 @@ export const StyledMain = styled("div", {
     fontSize: "28px",
     fontWeight: "600",
     margin: "50px 0",
+    textAlign: "center",
+
+    "@md": {
+      fontSize: "24px",
+      margin: "30px 0",
+    },
+  },
+
+  ".button-box": {
+    position: "absolute",
+    top: "20px",
+    right: "20px",
+    display: "flex",
+    gap: "8px",
+
+    a: {
+      textDecoration: "none",
+      display: "flex",
+    },
+
+    "@md": {
+      position: "relative",
+      top: "auto",
+      right: "auto",
+      justifyContent: "center",
+      marginBottom: "20px",
+    },
+
+    ".btn-lang": {
+      width: "36px",
+      height: "36px",
+      padding: "0",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: "50%",
+      fontSize: "14px",
+      textTransform: "uppercase",
+
+      "@md": {
+        width: "32px",
+        height: "32px",
+      },
+    },
   },
 
   ".option-list": {
     display: "flex",
-    width: "700px",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: "20px",
+    maxWidth: "700px",
     margin: "0 auto",
-    height: "300px",
+    padding: "20px",
+
+    "@md": {
+      flexDirection: "column",
+      alignItems: "center",
+      height: "auto",
+    },
   },
 });
 
 export const SelectOption = styled("div", {
-  width: "100%",
-
+  flex: "1",
+  minWidth: "150px",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  marginBottom: "20px",
 
   h3: {
     fontSize: "24px",
     fontWeight: "600",
     marginBottom: "14px",
+    textAlign: "center",
+
+    "@md": {
+      fontSize: "20px",
+      marginBottom: "10px",
+    },
   },
 });

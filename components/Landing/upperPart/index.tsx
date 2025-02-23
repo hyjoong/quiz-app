@@ -58,7 +58,7 @@ const UpperPart = () => {
       <p>{t("title")}</p>
 
       <div className="button-box">
-        <Link href="/" locale={"en"}>
+        <Link href="/" locale={"en"} style={{ textDecoration: "none" }}>
           <Button
             className="btn-lang"
             StyleType={locale === "en" ? "filled" : "normal"}
@@ -66,7 +66,7 @@ const UpperPart = () => {
             en
           </Button>
         </Link>
-        <Link href="/" locale={"ko"}>
+        <Link href="/" locale={"ko"} style={{ textDecoration: "none" }}>
           <Button
             className="btn-lang"
             StyleType={locale === "ko" ? "filled" : "normal"}

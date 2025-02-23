@@ -4,10 +4,11 @@ import QuizItem from "../quizItem";
 import Button from "@components/commons/Button";
 import {
   AnswerCount,
-  AnswerResult,
-  ButtonWrapper,
   QuizBoxStyled,
   QuizList,
+  QuizActionArea,
+  AnswerResult,
+  ButtonWrapper,
 } from "./style";
 import useQuiz from "@hooks/useQuiz";
 import { unEscapeHtml } from "@utils/convertText";
@@ -27,6 +28,7 @@ const QuizBox = () => {
     handleTryAgain,
     handlePage,
   } = useQuiz(quizList);
+
   return (
     <QuizBoxStyled>
       <div className="quiz-header">
@@ -63,36 +65,33 @@ const QuizBox = () => {
           />
         ))}
       </QuizList>
-      <AnswerResult isAnswered={isAnswered}>
-        {isAnswered === undefined
-          ? ""
-          : isAnswered
-          ? "정답입니다"
-          : "오답입니다"}
-      </AnswerResult>
-      <ButtonWrapper>
-        <Button
-          size="lg"
-          onClick={isAnswered === undefined ? handleSubmit : handleTryAgain}
-          StyleType={
-            isAnswered !== undefined ||
-            (isAnswered === undefined && selectOption === "")
-              ? "normal"
-              : "filled"
-          }
-          disabled={selectOption === "" && isAnswered === undefined}
-        >
-          {isAnswered === undefined ? "정답 확인" : "다시 풀기"}
-        </Button>
-        <Button
-          size="lg"
-          onClick={handlePage}
-          disabled={isAnswered === undefined}
-          isDisabled={isAnswered === undefined}
-        >
-          {quizList.length === quizNumber + 1 ? "결과 보기" : "다음 문제"}
-        </Button>
-      </ButtonWrapper>
+      <QuizActionArea>
+        <div className="inner">
+          <AnswerResult isAnswered={isAnswered}>
+            {isAnswered !== undefined && (
+              <span>{isAnswered ? "정답입니다!" : "오답입니다."}</span>
+            )}
+          </AnswerResult>
+
+          <ButtonWrapper>
+            <Button
+              onClick={isAnswered === undefined ? handleSubmit : handleTryAgain}
+              StyleType={isAnswered !== undefined ? "normal" : "filled"}
+              disabled={selectOption === "" && isAnswered === undefined}
+            >
+              {isAnswered === undefined ? "정답 확인" : "다시 풀기"}
+            </Button>
+
+            <Button
+              onClick={handlePage}
+              disabled={isAnswered === undefined}
+              StyleType="filled"
+            >
+              {quizList.length === quizNumber + 1 ? "결과 보기" : "다음 문제"}
+            </Button>
+          </ButtonWrapper>
+        </div>
+      </QuizActionArea>
     </QuizBoxStyled>
   );
 };

@@ -8,9 +8,9 @@ import { Pie } from "@components/chart/pieChart/type";
 import PieChart from "@components/chart/pieChart";
 
 const ResultInfo = () => {
-  // const PieChart = dynamic(() => import("@components/chart/pieChart"), {
-  //   ssr: false,
-  // });
+  const PieChart = dynamic(() => import("@components/chart/pieChart"), {
+    ssr: false,
+  });
   const router = useRouter();
 
   const { setResetStore, correctCount, inCorrectCount, timer } =
@@ -24,18 +24,20 @@ const ResultInfo = () => {
     {
       id: "correct",
       value: correctCount,
-      color: "hsl(228, 72.13930348258705%, 39.411764705882355%)",
+      color: "#38bcb2",
     },
     {
       id: "wrong",
       value: inCorrectCount,
-      color: "hsl(5.930232558139535, 87.75510204081634%, 38.431372549019606%)",
+      color: "#ff0044",
     },
   ];
 
   return (
     <ResultInfoStyled>
-      <PieChart data={chartData} />
+      <div className="chart-container">
+        <PieChart data={chartData} />
+      </div>
       <InfoBox>
         <p>정답 : {correctCount}</p>
         <p>오답 : {inCorrectCount}</p>

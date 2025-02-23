@@ -6,53 +6,101 @@ const trembling = keyframes({
 });
 
 export const QuizItemStyled = styled("li", {
+  position: "relative",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  height: "21px",
-  padding: "10px",
+  height: "50px",
+  padding: "0 15px",
   border: "2px solid #D1D5DB",
   borderRadius: "5px",
   cursor: "pointer",
   userSelect: "none",
+  transition: "border-color 0.2s ease, background-color 0.2s ease",
+  backgroundColor: "white",
+  boxSizing: "border-box",
+  margin: "0 0 20px 0",
+
+  "@md": {
+    height: "44px",
+    padding: "0 12px",
+    fontSize: "14px",
+    margin: "0 0 15px 0",
+  },
+
+  "&:last-child": {
+    marginBottom: 0,
+  },
 
   ".quizContent": {
     display: "flex",
-  },
-  ".index": {
-    marginRight: "5px",
+    alignItems: "center",
+    gap: "5px",
+    flex: 1,
+    overflow: "hidden",
+
+    p: {
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+    },
+
+    "@md": {
+      fontSize: "14px",
+    },
   },
 
-  "&:not(:last-child)": {
-    marginBottom: "20px",
+  ".index": {
+    marginRight: "5px",
+    flexShrink: 0,
+  },
+
+  "&:hover": {
+    borderColor: "#BBBBBB",
   },
 
   variants: {
     isSelected: {
       true: {
-        border: "2px solid #BBBBBB",
-      },
-      false: {
-        "&:hover": { boxShadow: "none" },
+        borderColor: "#BBBBBB",
       },
     },
 
     isAnswered: {
       true: {
-        border: "2px solid $green",
+        borderColor: "$green",
+        backgroundColor: "rgba(0, 255, 0, 0.05)",
         cursor: "default",
+
+        "&:hover": {
+          borderColor: "$green",
+        },
       },
       false: {
-        border: "2px solid $red",
+        borderColor: "$red",
+        backgroundColor: "rgba(255, 0, 0, 0.05)",
         cursor: "default",
         animation: `${trembling} 0.1s 3 ease`,
+
+        "&:hover": {
+          borderColor: "$red",
+        },
       },
       undefined: {
         "&:hover": {
-          boxShadow:
-            "rgb(0 0 0 / 12%) 0px 1px 1px 0px, rgb(61 59 53 / 16%) 0px 0px 0px 1px, rgb(61 59 53 / 8%) 0px 3px 9px 0px, rgb(61 59 53 / 8%) 0px 2px 5px 0px",
+          borderColor: "#BBBBBB",
         },
       },
     },
   },
+
+  compoundVariants: [
+    {
+      isAnswered: undefined,
+      isSelected: true,
+      css: {
+        borderColor: "#BBBBBB",
+      },
+    },
+  ],
 });

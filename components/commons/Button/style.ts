@@ -1,11 +1,15 @@
 import { styled } from "@lib/stitches.config";
 
 export const ButtonStyled = styled("button", {
-  color: "$white",
-  backgroundColor: "$green",
-  outLine: "none",
+  outline: "none",
   border: "none",
   cursor: "pointer",
+  fontWeight: "600",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  whiteSpace: "nowrap",
+  transition: "all 0.2s ease",
 
   variants: {
     size: {
@@ -36,7 +40,27 @@ export const ButtonStyled = styled("button", {
         backgroundColor: "$white",
         border: "1px solid $green",
       },
-      filled: { color: "$white", backgroundColor: "$green" },
+      filled: {
+        color: "white",
+        backgroundColor: "$green",
+      },
+    },
+  },
+
+  defaultVariants: {
+    size: "md",
+    StyleType: "filled",
+  },
+
+  "&:disabled": {
+    backgroundColor: "#D1D5DB",
+    cursor: "not-allowed",
+    opacity: 0.7,
+    borderColor: "#D1D5DB",
+    color: "white",
+
+    "&:hover": {
+      backgroundColor: "#D1D5DB",
     },
   },
 });
