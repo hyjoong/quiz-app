@@ -1,18 +1,19 @@
 import { styled } from "@lib/stitches.config";
 
 export const StyledMain = styled("div", {
-  minHeight: "calc(100vh - 4px)",
   width: "100%",
-  padding: "20px",
+  minHeight: "100vh",
+  display: "flex",
+  flexDirection: "column",
+  position: "relative",
+  paddingBottom: "100px",
   boxSizing: "border-box",
 
   ">p": {
-    display: "flex",
-    justifyContent: "center",
     fontSize: "28px",
     fontWeight: "600",
-    margin: "50px 0",
     textAlign: "center",
+    margin: "50px 0",
 
     "@md": {
       fontSize: "24px",
@@ -26,6 +27,7 @@ export const StyledMain = styled("div", {
     right: "20px",
     display: "flex",
     gap: "8px",
+    zIndex: 1,
 
     a: {
       textDecoration: "none",
@@ -60,18 +62,42 @@ export const StyledMain = styled("div", {
 
   ".option-list": {
     display: "flex",
-    flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
     gap: "20px",
     maxWidth: "700px",
     margin: "0 auto",
-    padding: "20px",
+    flex: 1,
 
     "@md": {
       flexDirection: "column",
       alignItems: "center",
-      height: "auto",
+      width: "100%",
+    },
+  },
+
+  ".start-button-container": {
+    display: "flex",
+    justifyContent: "center",
+    marginBottom: "100px",
+    width: "100%",
+    boxSizing: "border-box",
+
+    "@md": {
+      marginBottom: "80px",
+    },
+
+    button: {
+      maxWidth: "400px",
+      width: "100%",
+      height: "56px",
+      fontSize: "18px",
+
+      "@md": {
+        maxWidth: "none",
+        height: "50px",
+        fontSize: "16px",
+      },
     },
   },
 });
@@ -84,6 +110,12 @@ export const SelectOption = styled("div", {
   alignItems: "center",
   marginBottom: "20px",
 
+  "@md": {
+    width: "100%",
+    minWidth: "auto",
+    boxSizing: "border-box",
+  },
+
   h3: {
     fontSize: "24px",
     fontWeight: "600",
@@ -93,6 +125,7 @@ export const SelectOption = styled("div", {
     "@md": {
       fontSize: "20px",
       marginBottom: "10px",
+      width: "100%",
     },
   },
 });

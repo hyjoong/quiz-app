@@ -2,11 +2,11 @@ import { styled, keyframes } from "@lib/stitches.config";
 
 export const StyledScrollDownIndicator = styled("div", {
   position: "absolute",
-  bottom: 0,
+  bottom: "30px",
   left: "50%",
   width: "40px",
   height: "40px",
-  transform: " translateY(-80px) translateX(-50%) rotate(45deg)",
+  transform: "translateY(-80px) translateX(-50%) rotate(45deg)",
 });
 
 export const animate = keyframes({

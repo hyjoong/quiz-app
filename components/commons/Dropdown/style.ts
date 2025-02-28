@@ -8,6 +8,10 @@ export const DropdownnStyled = styled("div", {
   margin: "0 auto",
   position: "relative",
 
+  "@md": {
+    width: "100%",
+  },
+
   ".arrow-box": {
     position: "absolute",
     right: "10px",
@@ -17,13 +21,22 @@ export const DropdownnStyled = styled("div", {
     width: "100%",
     maxHeight: 0,
     overflow: "hidden",
-    borderWidth: "0 1px 1px 1px",
-    borderStyle: "solid",
-    borderColor: "#D1D5DB",
-    transition: "max-height 0.3s ease",
     position: "absolute",
-    background: "white",
-    zIndex: 1000,
+    top: "45px",
+    left: "0",
+    backgroundColor: "white",
+    borderRadius: "5px",
+    transition: "all 0.2s ease",
+    zIndex: 10,
+
+    variants: {
+      isOpen: {
+        true: {
+          maxHeight: "200px",
+          border: "1px solid #D1D5DB",
+        },
+      },
+    },
 
     "&::-webkit-scrollbar": {
       width: "5px",
@@ -50,14 +63,6 @@ export const DropdownnStyled = styled("div", {
         backgroundColor: "#F3F4F6",
       },
     },
-  },
-
-  "@media (max-width: 768px)": {
-    width: "200px",
-  },
-
-  "@md": {
-    width: "280px",
   },
 });
 

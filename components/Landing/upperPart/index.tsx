@@ -110,7 +110,7 @@ const UpperPart = () => {
           />
         </SelectOption>
       </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div className="start-button-container">
         <Button size="lg" onClick={handleMoveQuizPage} disabled={isLoading}>
           {isLoading ? <Loading /> : t("start")}
         </Button>
